@@ -12,14 +12,14 @@ const app = express();
 
 
 app.use(cors({
-  origin: 'https://batoul7.github.io/chat-frontend', 
+  origin: 'https://batoul7.github.io', 
   optionsSuccessStatus: 200
 }));
 
 const server = http.createServer(app);
 const io = new Server(server, {
   cors: {
-    origin: "https://batoul7.github.io/chat-frontend", 
+    origin: "https://batoul7.github.io", 
     methods: ["GET", "POST"]
   }
 });
