@@ -4,16 +4,22 @@ const app = require("./app");
 const mongoose = require("mongoose");
 const http = require('http');
 const { Server } = require('socket.io');
-
+const cors = require('cors');
 const Message = require('./models/Message');
 const User = require('./models/User');
+const corsOptions = {
+  origin: 'https://batoul7.github.io',
+  optionsSuccessStatus: 200 
+};
+
+app.use(cors(corsOptions));
 
 const server = http.createServer(app);
 const io = new Server(server, {
-    cors: {
-        origin: "http://localhost:5173",
-        methods: ["GET", "POST"]
-    }
+  cors: {
+    origin: "https://batoul7.github.io",
+    methods: ["GET", "POST"] 
+  }
 });
 
 io.on('connection', (socket) => {
